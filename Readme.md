@@ -12,7 +12,7 @@ In this lab, you will complete one specific image-processing function located in
 detect_color_objects(...)
 ```
 
-**Students should modify only `color_detection.py`. Do not modify `main.py`, `gui.py`, `video_thread.py`, `annotation.py`, `config.py`, or any other project file.**
+Students should modify only `color_detection.py`. Do not modify `main.py`, `gui.py`, `video_thread.py`, `annotation.py`, `config.py`, or any other project file.
 
 The expected processing pipeline is:
 
@@ -36,7 +36,6 @@ Contour Detection
 Bounding Boxes
 ```
 
-The supplied comments in `color_detection.py` specify the expected algorithm and function contract so that different correct student implementations remain compatible with the rest of the application.
 
 ## ✨ Features
 
@@ -125,10 +124,6 @@ Observe how each change affects noise, holes, object boundaries, and the final d
 
 `Min area` removes contours that are too small to be considered detected objects.
 
-### Annotation and future tracking
-
-`detect_color_objects()` returns only bounding boxes. Drawing those boxes is intentionally handled by `annotation.py`. This separation makes it possible to add tracking or other post-processing later without changing the detection function's contract.
-
 ## 📂 Repository Structure
 
 ```text
@@ -159,49 +154,3 @@ cvml-lab02-color-detection/
 - `F11` — Full Screen / Windowed
 - `R` — Reset Defaults
 - `Q` — Quit
-
-## 📌 Student Implementation Contract
-
-Keep the following contract unchanged:
-
-```python
-detect_color_objects(
-    frame,
-    lower_hsv,
-    upper_hsv,
-    min_area,
-    kernel_size,
-    kernel_shape,
-    opening_enabled,
-    opening_iterations,
-    closing_enabled,
-    closing_iterations,
-    processing_outputs,
-) -> list[tuple[int, int, int, int]]
-```
-
-The function must:
-
-- return a list of `(x, y, w, h)` bounding boxes;
-- store the threshold-only binary mask in `processing_outputs["raw_mask"]`;
-- store the morphology result in `processing_outputs["final_mask"]`;
-- avoid GUI code and annotation code;
-- use only the inputs provided to the function.
-
-Do not change the function name or argument list.
-
-## 📚 Suggested Concepts to Review
-
-Before implementing the function, review:
-
-- HSV color representation
-- `cv2.inRange`
-- Hue wrap-around
-- Binary image morphology
-- Erosion and dilation
-- Opening and closing
-- Structuring-element shape
-- `cv2.findContours`
-- `cv2.contourArea`
-- `cv2.boundingRect`
-
